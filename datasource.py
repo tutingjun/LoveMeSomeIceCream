@@ -7,7 +7,6 @@ class DataSource:
     or some other collection or object.
     '''
 
-    connection = None;
     def __init__(self):
         '''
         Note: if you choose to implement the constructor, this does *not* count as one of your implemented methods.
