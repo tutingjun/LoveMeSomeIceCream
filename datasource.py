@@ -76,7 +76,7 @@ class DataSource:
         '''
         try:
             cursor = connection.cursor();
-            query  = "SELECT image_key FROM products WHERE product_name "+ " LIKE '%"+str(keyword).capitalize() +"%'" + "OR subhead " + "LIKE '%"+str(keyword).capitalize() + "%'"
+            query  = "SELECT image_key FROM products WHERE product_name "+ " LIKE '%"+str(keyword).title() +"%'" + "OR subhead " + "LIKE '%"+str(keyword).title() + "%'"
             cursor.execute(query)
             out = list(sum(cursor.fetchall(), ()))
             return out
@@ -127,7 +127,7 @@ class DataSource:
         try:
             cursor = connection.cursor();
 
-            query_products  = "SELECT image_key FROM products WHERE brand " + " LIKE '%" + str(brand) + "%' AND product_name " + "LIKE '%" + str(product_name).capitalize()+ "%' OR subhead " + "LIKE '%"+str(product_name).capitalize() + "%' AND rating BETWEEN " + str(lower_rating) + " AND " + str(upper_rating) + " AND ingredients " + "LIKE '%" + str(ingredients).upper() + "%'"
+            query_products  = "SELECT image_key FROM products WHERE brand " + " LIKE '%" + str(brand) + "%' AND product_name " + "LIKE '%" + str(product_name).title()+ "%' OR subhead " + "LIKE '%"+str(product_name).title() + "%' AND rating BETWEEN " + str(lower_rating) + " AND " + str(upper_rating) + " AND ingredients " + "LIKE '%" + str(ingredients).upper() + "%'"
 
             cursor.execute(query_products)
             return list(sum(cursor.fetchall(), ()))
