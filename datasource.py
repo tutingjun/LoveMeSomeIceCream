@@ -251,7 +251,7 @@ if __name__ == '__main__':
     #match
     products_ingredient_match = test.match_product(connection, "chocolate", "ingredients")
     products_name_match = test.match_product(connection, "Salted", "name")
-    products_advance_match = test.advance_product_product(connection, "bj", "Salted Caramel Core", 3, 4, "cream" )
+    products_advance_match = test.advance_products_match(connection, "bj", "Salted Caramel Core", 3, 4, "cream" )
     
     #print
     print("products_ingredient_match\n")
