@@ -49,7 +49,7 @@ class DataSource:
         try:
             cursor = connection.cursor();
             if (match_column != "name"):
-                query = "SELECT image_key FROM products WHERE " + str(match_column) + " IN \'" + str(keyword) + "\'"
+                query = "SELECT image_key FROM products WHERE " + str(match_column) + " IN '" + str(keyword) + "'"
                 cursor.execute(query)
                 return list(sum(cursor.fetchall(), ()))
             elif (match_column == "name"):
@@ -76,7 +76,7 @@ class DataSource:
         '''
         try:
             cursor = connection.cursor();
-            query  = "SELECT image_key FROM products WHERE name "+ " IN \' "+str(keyword).capitalize() +" \'" + "OR subhead" + "IN \'"+str(keyword).capitalize() + " \'"
+            query  = "SELECT image_key FROM products WHERE name "+ " IN ' "+str(keyword).capitalize() +" '" + "OR subhead" + "IN '"+str(keyword).capitalize() + " '"
             cursor.execute(query)
             out = list(sum(cursor.fetchall(), ()))
             return out
@@ -127,11 +127,11 @@ class DataSource:
         try:
             cursor = connection.cursor();
 
-            query_products  = "SELECT image_key FROM products WHERE brand " + " IN \' " + str(brand) + " \'"
-            query_products += "AND product_name" + "IN \'" + str(product_name).upper()+ " \'"
-            query_products += "OR subhead" + "IN \'"+str(product_name).upper() + " \'"
-            query_products += "AND rating BETWEEN " + int(upper_rating) + " AND " + int(lower_rating)
-            query_products += " AND ingredients " + "IN \'" + str(ingredients).upper() + " \'"
+            query_products  = "SELECT image_key FROM products WHERE brand " + " IN ' " + str(brand) + " '"
+            query_products += "AND product_name" + "IN '" + str(product_name).upper()+ " '"
+            query_products += "OR subhead" + "IN '"+str(product_name).upper() + " '"
+            query_products += "AND rating BETWEEN " + str(upper_rating) + " AND " + str(lower_rating)
+            query_products += " AND ingredients " + "IN '" + str(ingredients).upper() + " '"
 
             cursor.execute(query_products)
             return list(sum(cursor.fetchall(), ()))
@@ -155,7 +155,7 @@ class DataSource:
         '''
         try:
             cursor = connection.cursor();
-            query_reviews = "SELECT image_key FROM reviews WHERE review_text " + "IN \'" + str(review_text) + " \'"
+            query_reviews = "SELECT image_key FROM reviews WHERE review_text " + "IN '" + str(review_text) + " '"
             cursor.execute(query_reviews)
             return list(sum(cursor.fetchall(), ()))
         
