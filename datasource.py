@@ -128,7 +128,7 @@ class DataSource:
             cursor = connection.cursor();
 
             query_products  = "SELECT image_key FROM products WHERE brand " + " LIKE '%" + str(brand) + "%'"
-            query_products += "AND product_name" + "LIKE '%" + str(product_name).upper()+ "%'"
+            query_products += "AND product_name " + "LIKE '%" + str(product_name).upper()+ "%'"
             query_products += "OR subhead " + "LIKE '%"+str(product_name).upper() + "%'"
             query_products += "AND rating BETWEEN " + str(upper_rating) + " AND " + str(lower_rating)
             query_products += " AND ingredients " + "LIKE '%" + str(ingredients).upper() + "%'"
