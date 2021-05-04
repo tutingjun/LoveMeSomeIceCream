@@ -105,7 +105,7 @@ class DataSource:
         products_match = self.advance_products_match(connection, brand, product_name, upper_rating, lower_rating, ingredients)
         reviews_match = self.advance_reviews_match(connection, review_text)
 
-        advance_match = products_match + list(set(reviews_match) - set(products_match))
+        advance_match = list(set(products_match).intersection(reviews_match))
         return advance_match
 
 
