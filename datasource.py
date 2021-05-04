@@ -104,9 +104,7 @@ class DataSource:
         '''
         products_match = self.advance_products_match(connection, brand, product_name, upper_rating, lower_rating, ingredients)
         reviews_match = self.advance_reviews_match(connection, review_text)
-        print(products_match)
-        print("\n")
-        print(reviews_match)
+
         advance_match = list(set(products_match).intersection(reviews_match))
         return advance_match
 
@@ -129,11 +127,7 @@ class DataSource:
         try:
             cursor = connection.cursor();
 
-            query_products  = "SELECT image_key FROM products WHERE brand " + " LIKE '%" + str(brand) + "%'"
-            query_products += "AND product_name " + "LIKE '%" + str(product_name).capitalize()+ "%'"
-
-            query_products += "AND rating BETWEEN " + str(upper_rating) + " AND " + str(lower_rating)
-            query_products += " AND ingredients " + "LIKE '%" + str(ingredients).upper() + "%'"
+            query_products  = "SELECT image_key FROM products WHERE brand " + " LIKE '%" + str(brand) + "%' AND product_name " + "LIKE '%" + str(product_name).capitalize()+ "%' OR subhead " + "LIKE '%"+str(product_name).capitalize() + "%' AND rating BETWEEN " + str(upper_rating) + " AND " + str(lower_rating) + " AND ingredients " + "LIKE '%" + str(ingredients).upper() + "%'"
 
             cursor.execute(query_products)
             return list(sum(cursor.fetchall(), ()))
