@@ -76,7 +76,7 @@ class DataSource:
         '''
         try:
             cursor = connection.cursor();
-            query  = "SELECT image_key FROM products WHERE name "+ " LIKE '%"+str(keyword).capitalize() +"%'" + "OR subhead" + "LIKE '%"+str(keyword).capitalize() + "%'"
+            query  = "SELECT image_key FROM products WHERE product_name "+ " LIKE '%"+str(keyword).capitalize() +"%'" + "OR subhead" + "LIKE '%"+str(keyword).capitalize() + "%'"
             cursor.execute(query)
             out = list(sum(cursor.fetchall(), ()))
             return out
