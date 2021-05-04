@@ -86,7 +86,7 @@ class DataSource:
             return []
    
    
-    def advance_match(self, connection, brand, product_name, upper_rating,  lower_rating, ingredients, review_text):
+    def advance_match(self, connection, brand, product_name, upper_rating, lower_rating, ingredients, review_text):
         '''
         Call the two helper function advance_products_match and advance_reviews_match and merge the two lists into one without dulipcate image_key
         
@@ -128,8 +128,8 @@ class DataSource:
             cursor = connection.cursor();
 
             query_products  = "SELECT image_key FROM products WHERE brand " + " LIKE '%" + str(brand) + "%'"
-            query_products += "AND product_name " + "LIKE '%" + str(product_name).upper()+ "%'"
-            query_products += "OR subhead " + "LIKE '%"+str(product_name).upper() + "%'"
+            query_products += "AND product_name " + "LIKE '%" + str(product_name).capitalize()+ "%'"
+            query_products += "OR subhead " + "LIKE '%"+str(product_name).capitalize() + "%'"
             query_products += "AND rating BETWEEN " + str(upper_rating) + " AND " + str(lower_rating)
             query_products += " AND ingredients " + "LIKE '%" + str(ingredients).upper() + "%'"
 
@@ -155,7 +155,7 @@ class DataSource:
         '''
         try:
             cursor = connection.cursor();
-            query_reviews = "SELECT image_key FROM reviews WHERE review_text " + " LIKE '%" + str(review_text) + "%'"
+            query_reviews = "SELECT image_key FROM reviews WHERE review_text " + "LIKE '%" + str(review_text) + "%'"
             cursor.execute(query_reviews)
             return list(sum(cursor.fetchall(), ()))
         
@@ -251,7 +251,7 @@ if __name__ == '__main__':
     #match
     products_ingredient_match = test.match_product(connection, "chocolate", "ingredients")
     products_name_match = test.match_product(connection, "Salted", "name")
-    products_advance_match = test.advance_products_match(connection, "bj", "Salted Caramel Core", 3, 4, "cream" )
+    products_advance_match = test.advance_match(connection, "bj", "Salted Caramel Core", 3, 4, "cream", "good")
     
     #print
     print("products_ingredient_match\n")
@@ -265,4 +265,3 @@ if __name__ == '__main__':
     print("products_advance_match\n")
     for item in products_advance_match:
         print(item)
-
