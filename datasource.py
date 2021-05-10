@@ -172,12 +172,12 @@ class DataSource:
         Returns:
             a list of ranked products image_key with respect to the input column
         '''
+        # if product_list is empty, no need to rank
+        if product_list == []:
+            return product_list
         # if rank_column is null, default to ranking alphabetically by product_name
         if rank_column is None:
             rank_column = "product_name"
-        # if product_list is empty, no need to rank
-        elif product_list == []:
-            return product_list
         try:
             cursor = connection.cursor();
             query = 'SELECT image_key FROM products WHERE image_key IN ({}) ORDER BY {} DESC'.format(','.join(['%s'] * len(product_list)), str(rank_column))
