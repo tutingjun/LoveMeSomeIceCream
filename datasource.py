@@ -127,7 +127,7 @@ class DataSource:
         try:
             cursor = connection.cursor();
 
-            query_products  = "SELECT image_key FROM products WHERE brand " + " LIKE '%" + str(brand) + "%' AND product_name " + "LIKE '%" + str(product_name).title()+ "%' OR subhead " + "LIKE '%"+str(product_name).title() + "%' AND rating BETWEEN " + str(lower_rating) + " AND " + str(upper_rating) + " AND ingredients " + "LIKE '%" + str(ingredients).upper() + "%'"
+            query_products  = "SELECT image_key FROM products WHERE brand " + " LIKE '%" + str(brand) + "%' AND product_name " + "LIKE '%" + str(product_name).title()+ "%' OR subhead " + "LIKE '%" + str(product_name).title() + "%' AND rating BETWEEN " + str(lower_rating) + " AND " + str(upper_rating) + " AND ingredients " + "LIKE '%" + str(ingredients).upper() + "%'"
 
             cursor.execute(query_products)
             return list(sum(cursor.fetchall(), ()))
@@ -172,7 +172,15 @@ class DataSource:
         Returns:
             a list of ranked products image_key with respect to the input column
         '''
-        pass
+        try:
+            cursor = connection.cursor();
+            query = 'SELECT image_key FROM products WHERE image_key IN ({}) ORDER BY {} DESC'.format(','.join(['%s'] * len(product_list)), str(rank_column))
+            cursor.execute(query, product_list)
+            return list(sum(cursor.fetchall(), ()))
+        
+        except Exception as e:
+            print ("Something went wrong when executing the query: ", e)
+            return []
 
 
     def getProductSummary(self, connection, image_key):
@@ -248,16 +256,23 @@ if __name__ == '__main__':
     products_ingredient_match = test.match_product(connection, "chocolate", "ingredients")
     products_name_match = test.match_product(connection, "Salted", "name")
     products_advance_match = test.advance_match(connection, "bj", "Salted Caramel Core", 3, 4, "cream", "good")
+    products_rank = test.rank_product(connection, products_name_match, "rating_count")
     
     #print
-    print("products_ingredient_match\n")
+    print("\nproducts_ingredient_match:")
     for item in products_ingredient_match:
         print(item)
     
-    print("products_name_match\n")
+    print("\nproducts_name_match:")
     for item in products_name_match:
         print(item)
     
-    print("products_advance_match\n")
+    print("\nproducts_advance_match")
     for item in products_advance_match:
         print(item)
+    
+    print("\nproducts_advance_match:")
+    for item in products_rank:
+        print(item)
+    
+    connection.close()
