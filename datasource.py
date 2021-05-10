@@ -256,7 +256,7 @@ if __name__ == '__main__':
     products_ingredient_match = test.match_product(connection, "chocolate", "ingredients")
     products_name_match = test.match_product(connection, "Salted", "name")
     products_advance_match = test.advance_match(connection, "bj", "Salted Caramel Core", 3, 4, "cream", "good")
-    products_rank = test.rank_product(connection, products_name_match, "product_name")
+    products_rank = test.rank_product(connection, products_name_match, "rating")
     
     #print
     print("\nproducts_ingredient_match:")
