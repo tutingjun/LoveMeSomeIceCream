@@ -159,7 +159,7 @@ class DataSource:
             print ("Something went wrong when executing the query: ", e)
             return []
 
-
+    # This is the method we implemented using TDD
     def rank_product(self, connection, product_list, rank_column):
         '''
         Rank the input products with respect to the input column
@@ -172,9 +172,16 @@ class DataSource:
         Returns:
             a list of ranked products image_key with respect to the input column
         '''
+        # if rank_column is null, default to ranking alphabetically by product_name
+        if rank_column is None:
+            rank_column = "product_name"
+        # if product_list is empty, no need to rank
+        elif product_list == []:
+            return product_list;
         try:
             cursor = connection.cursor();
             query = 'SELECT image_key FROM products WHERE image_key IN ({}) ORDER BY {} DESC'.format(','.join(['%s'] * len(product_list)), str(rank_column))
+            # we only rank in decending order
             cursor.execute(query, product_list)
             return list(sum(cursor.fetchall(), ()))
         
@@ -256,9 +263,6 @@ if __name__ == '__main__':
     products_ingredient_match = test.match_product(connection, "chocolate", "ingredients")
     products_name_match = test.match_product(connection, "Salted", "name")
     products_advance_match = test.advance_match(connection, "bj", "Salted Caramel Core", 3, 4, "cream", "good")
-    products_rank = test.rank_product(connection, products_name_match, "rating_count")
-    
-    print(products_name_match)
     
     #print
     print("\nproducts_ingredient_match:")
@@ -271,10 +275,6 @@ if __name__ == '__main__':
     
     print("\nproducts_advance_match")
     for item in products_advance_match:
-        print(item)
-    
-    print("\nproducts_rank:")
-    for item in products_rank:
         print(item)
     
     connection.close()
