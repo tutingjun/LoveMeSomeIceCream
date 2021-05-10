@@ -258,6 +258,8 @@ if __name__ == '__main__':
     products_advance_match = test.advance_match(connection, "bj", "Salted Caramel Core", 3, 4, "cream", "good")
     products_rank = test.rank_product(connection, products_name_match, "rating_count")
     
+    print(products_name_match)
+    
     #print
     print("\nproducts_ingredient_match:")
     for item in products_ingredient_match:
