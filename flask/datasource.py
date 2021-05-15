@@ -53,7 +53,7 @@ class DataSource:
                 cursor.execute(query)
                 return list(sum(cursor.fetchall(), ()))
             elif (match_column == "name"):
-                return self.match_name(self.connection, keyword)
+                return self.match_name(keyword)
             else:
                 print("Invalid match_column")
                 return []
