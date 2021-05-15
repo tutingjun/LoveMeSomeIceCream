@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<title>LoveMeSomeIceCream</title>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='index_style.css') }}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+
+
+<body>
+
+
+	<!--Navigation Bar-->
+	<div class="navigationBar">
+		<div class="container">
+			<div>
+				<img src="{{ url_for('static', filename='logo.png') }}" alt="Site logo" class="logo">
+        </div>
+        <div class="menu">
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="analysis.html">Brand Analysis</a></li>
+            <li><a href="download.html">Download Data</a></li>
+            <li><a href="about.html">About Data</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  
+    <!--Main Search Area-->
+    <section aria-label="Search by brands, product name, ingredients, or review keywords" class='search'>      
+        <!--Image-->
+        <div class="home_img">
+            <img id="sig-pic" src="{{ url_for('static', filename='sig-pic.jpeg') }}" alt="Site signature image"/>
+        </div>
+
+        <!--Search Content-->
+        <div class="search_content">
+            <h1 class="welcome_title">
+                <div class="header_top">Find the ice cream</div>
+                <div class="header_title">That you will love</div>
+            </h1>
+
+            <div class="line">
+                <img src="{{ url_for('static', filename='line.png') }}"" alt="decoration line">
+			</div>
+
+            <div class="welcome_blurb"> Your next favorite ice cream product can be found here using our comprehensive search filters. We will provide you with all the information you want about ice creams.</div>
+
+            <form action="/results" method="post">
+                <div class= "home__search__verticals">
+                <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                  <label class="btn btn-secondary active">
+                        <input type="radio" id="tab-Brand" autocomplete = "off" name = "search_option" checked>Brand 
+                  </label>
+                  <label class="btn btn-secondary">
+                        <input type="radio" id="tab-Ice_cream_name" autocomplete = "off" name = "search_option">Name
+                  </label>
+                  <label class="btn btn-secondary">
+                        <input type="radio" id="tab-Ingredients_keyword" autocomplete = "off" name = "search_option">Ingredients
+                  </label>
+                    <label class="btn btn-secondary">
+                        <input type="radio" id="tab-Review_keyword" autocomplete = "off" name = "search_option">Advance Search
+                  </label>
+                </div>
+                </div>
+
+                <div class="site-search">
+                    <input type="text" id="site-search" name="q"
+                        aria-label="Search through site content" placeholder="Enter a Keyword" class="search_bar">
+            
+                    <input type="image" class = "search-button" src="{{ url_for('static', filename='loupe.png') }}" alt="search button" width="51" height="51" value="">
+                </div>
+
+            </form>
+              
+                
+        </div>    
+    
+    </section>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+</html>
