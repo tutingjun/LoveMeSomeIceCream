@@ -197,7 +197,7 @@ class DataSource:
         '''
         try:
             cursor = self.connection.cursor();
-            query = 'SELECT image_key, product_name, brand, rating FROM products WHERE image_key = '+ " \' "+str(image_key) + "\' "
+            query = 'SELECT image_key, product_name, brand, rating FROM products WHERE image_key = '+ " \'"+str(image_key) + "\' "
             cursor.execute(query)
             productValue = list(sum(cursor.fetchall(), ()))
             productKey = ["image_key", "product_name", "brand", "rating"]
