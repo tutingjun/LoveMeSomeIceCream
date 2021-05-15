@@ -201,8 +201,6 @@ class DataSource:
             cursor.execute(query)
             productValue = list(sum(cursor.fetchall(), ()))
             productKey = ["image_key", "product_name", "brand", "rating"]
-            print(productValue)
-            print("\n")
             return self.makeProductDictionary(productValue, productKey)
         
         except Exception as e:
