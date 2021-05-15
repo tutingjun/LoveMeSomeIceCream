@@ -1,6 +1,6 @@
 import flask
 from flask import render_template, request
-from datasource import *
+from datasource import DataSource
 import json
 import sys
 
@@ -16,16 +16,20 @@ def homePage():
     '''
     return render_template('index.html')
 
-@app.route('/results', methods=['POST', 'GET'])
+@app.route('/results', methods=['POST'])
 def searchResult():
     '''
     This method is executed once you submit the simple form. It embeds the form responses
     into a web page.
     '''
-    if request.method == 'POST':
-        result = request.form
-
-        # Here is where you would call one or more database methods with the form data.
+    search_option = request.form["search_option"]
+    search_text = request.form["search_text"]
+    
+    backend = DataSource()
+    products_match = backend.match_product(search_text, search_option)
+    result = []
+    for img_key in products_match:
+        result.append(backend.getProductSummary(img_key))
     return render_template('product_list.html', results=result)
 
 if __name__ == '__main__':
