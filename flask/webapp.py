@@ -29,7 +29,7 @@ def searchResult():
     products_match = backend.match_product(search_text, search_option)
     result = []
     for img_key in products_match:
-        result.append(json.dump(backend.getProductSummary(img_key)))
+        result.append(backend.getProductSummary(img_key))
     return render_template('product_list.html', results=result)
 
 if __name__ == '__main__':
