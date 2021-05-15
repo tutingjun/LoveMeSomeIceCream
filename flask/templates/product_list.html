@@ -17,25 +17,27 @@
         </div>
         <div class="menu">
           <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="analysis.html">Brand Analysis</a></li>
-            <li><a href="download.html">Download Data</a></li>
-            <li><a href="about.html" class="nav-active">About Data</a></li>
+            <li><a href="{{ url_for('templates', filename='index.html') }}">Home</a></li>
+            <li><a href="{{ url_for('templates', filename='analysis.html') }}">Brand Analysis</a></li>
+            <li><a href="{{ url_for('templates', filename='download.html') }}">Download Data</a></li>
+            <li><a href="{{ url_for('templates', filename='about.html') }}">About Data</a></li>
           </ul>
         </div>
       </div>
     </div>
 
     <div>
-        <h1>Results</h1>   
+        <h1>Results</h1>
+        {% for product in results: %} 
         <table border = 1>
-            {% for key, value in results.items() %}
+            {% for key, value in product.items() %}
                 <tr>
                 <th> {{ key }} </th>
                 <td> {{ value }} </td>
                 </tr>
             {% endfor %}
         </table>
+        {% endfor %}
     </div>
 
 </body>
