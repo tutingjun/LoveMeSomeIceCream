@@ -197,7 +197,7 @@ class DataSource:
         '''
         try:
             cursor = self.connection.cursor();
-            query = 'SELECT image_key, product_name, brand_name, rating FROM products WHERE image_key = '+str(image_key)
+            query = 'SELECT image_key, product_name, brand_name, rating FROM products WHERE image_key = '+ " \' "+str(image_key) + "\' "
             cursor.execute(query)
             productValue = list(sum(cursor.fetchall(), ()))
             productKey = ["image_key", "product_name", "brand_name", "rating"]
@@ -220,7 +220,7 @@ class DataSource:
         '''
         try:
             cursor = self.connection.cursor();
-            query = 'SELECT * FROM products WHERE image_key = '+str(image_key)
+            query = 'SELECT * FROM products WHERE image_key = '+ " \'"+ str(image_key)+ "\'"
             cursor.execute(query)
             productValue = list(sum(cursor.fetchall(), ()))
             productKey = ['brand text', 'image_key', 'product_name', 'subhead' , 'product_description', 'rating' , 'rating_count', 'ingredients']
@@ -243,7 +243,7 @@ class DataSource:
         '''
         try:
             cursor = self.connection.cursor();
-            query = 'SELECT image_key, stars, review_text, author FROM reviews WHERE image_key = '+str(image_key)
+            query = 'SELECT image_key, stars, review_text, author FROM reviews WHERE image_key = \'' + str(image_key) + "\'"
             cursor.execute(query)
             return list(map(list, cursor.fetchall()))
             
@@ -291,4 +291,3 @@ if __name__ == '__main__':
     print("\nproducts_advance_match")
     for item in products_advance_match:
         print(item)
-    
