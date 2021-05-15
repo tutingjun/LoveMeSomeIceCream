@@ -20,10 +20,10 @@
         </div>
         <div class="menu">
           <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="analysis.html">Brand Analysis</a></li>
-            <li><a href="download.html">Download Data</a></li>
-            <li><a href="about.html">About Data</a></li>
+            <li><a href="{{ url_for('templates', filename='index.html') }}">Home</a></li>
+            <li><a href="{{ url_for('templates', filename='analysis.html') }}">Brand Analysis</a></li>
+            <li><a href="{{ url_for('templates', filename='download.html') }}">Download Data</a></li>
+            <li><a href="{{ url_for('templates', filename='about.html') }}">About Data</a></li>
           </ul>
         </div>
       </div>
@@ -57,10 +57,10 @@
                         <input type="radio" id="tab-Brand" autocomplete = "off" name = "search_option" checked value = "brand">Brand 
                   </label>
                   <label class="btn btn-secondary">
-                        <input type="radio" id="tab-Ice_cream_name" autocomplete = "off" name = "search_option" value = "name" >Name
+                        <input type="radio" id="tab-Ice_cream_name" autocomplete = "off" name = "search_option" value = "name">Name
                   </label>
                   <label class="btn btn-secondary">
-                        <input type="radio" id="tab-Ingredients_keyword" autocomplete = "off" name = "search_option" value= "ingredients" >Ingredients
+                        <input type="radio" id="tab-Ingredients_keyword" autocomplete = "off" name = "search_option" value = "ingredients">Ingredients
                   </label>
                     <label class="btn btn-secondary">
                         <input type="radio" id="tab-Review_keyword" autocomplete = "off" name = "search_option" value = "advance_search">Advance Search
@@ -69,7 +69,7 @@
                 </div>
 
                 <div class="site-search">
-                    <input type="text" id="site-search" name="q"
+                    <input type="text" id="site-search" name="search_text"
                         aria-label="Search through site content" placeholder="Enter a Keyword" class="search_bar">
             
                     <input type="image" class = "search-button" src="{{ url_for('static', filename='loupe.png') }}" alt="search button" width="51" height="51" value="">
