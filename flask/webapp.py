@@ -16,6 +16,13 @@ def homePage():
     '''
     return render_template('index.html')
 
+@app.route('/index')
+def home():
+    '''
+    Simplest example: print something in the browser
+    '''
+    return render_template('index.html')
+
 @app.route('/results', methods=['POST'])
 def searchResult():
     '''
