@@ -43,7 +43,7 @@ def searchResult():
     search.append(search_text)
     return render_template('product_list.html', results=result)
 
-@app.route('/results/rank', methods=['POST'])
+@app.route('/rank', methods=['POST'])
 def rankSearchResult():
     rank_option = request.form["rank"]
 
@@ -55,6 +55,13 @@ def rankSearchResult():
     for img_key in products_match:
         result.append(backend.getProductSummary(img_key))
     return render_template('product_list.html', results=result)
+
+@app.route('/product/<name>')
+def getProduct(name):
+    backend = DataSource()
+    product_info = backend.getProductSummary(name)
+    review_info = backend.getProductReviewInfo(name)
+    return render_template('sample_result_page.html', product=product_info, reviews=review_info)
 
 if __name__ == '__main__':
     if len(sys.argv) != 3:
