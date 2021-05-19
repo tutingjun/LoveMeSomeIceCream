@@ -19,7 +19,7 @@
         </div>
         <div class="menu">
           <ul>
-            <li><a href="index">Home</a></li>
+            <li><a href={{ url_for("homePage") }}>Home</a></li>
             <li><a href="analysis">Brand Analysis</a></li>
             <li><a href="download">Download Data</a></li>
             <li><a href="about">About Data</a></li>
@@ -33,29 +33,29 @@
     <section class = "sec-result" aria-label="main content">
         <div class="result">
             <div class="product-overview">
-                <img src="{{url_for('static', filename='7_bj.png')}}" alt="Chocolate Peanut Butter Split product image" class="ice-cream-img">
+                <img src="{{url_for('static', filename='images/'+product.image_key+'.png')}}" alt="product image" class="ice-cream-img">
                 <div class="overview-text">
-                    <h1> Chocolate Peanut Butter Split </h1>
+                    <h1> {{ product.product_name }} </h1>
 
                     <div class="overview-column">
                         <div class="overview-detail">
                             <div class="overview-title"><b>Subhead</b></div>
-                            <div class="overview-content">Chocolate & Banana Ice Creams with Mini Peanut Butter Cups</div>
+                            <div class="overview-content">{{ product.subhead }}</div>
                         </div>
 
                         <div class="overview-detail">
                             <div class="overview-title"><b>Brand Name</b></div>
-                            <div class="overview-content">Ben & Jerry's</div>
+                            <div class="overview-content">{{ product.brand }}</div>
                         </div>
 
                         <div class="overview-detail">
                             <div class="overview-title"><b>Rating</b></div>
-                            <div class="overview-content">5 stars</div>
+                            <div class="overview-content"> {{ product.rating }} </div>
                         </div>
 
                         <div class="overview-detail">
                             <div class="overview-title"><b>Descriptions</b></div>
-                            <div class="overview-content">We’ve loaded our banana and chocolate ice creams with a chocolatey lot of bite-size PB surprises, so if you find your chocolate-covered, peanut-buttered banana fantasies aren’t fulfilled in every spoonful, we suggest a bigger spoon.</div>
+                            <div class="overview-content">{{ product.product_description }}</div>
                         </div>         
                     </div>
                 </div>
@@ -66,7 +66,7 @@
                 <h2>Ingredients</h2>
                 
                 <p>
-                  CREAM, SKIM MILK, LIQUID SUGAR (SUGAR, WATER), WATER, SUGAR, PEANUTS, COCONUT OIL, BANANA PUREE, COCOA (PROCESSED WITH ALKALI), EGG YOLKS, MILK, NONFAT MILK, GUAR GUM, NATURAL FLAVORS, LEMON JUICE CONCENTRATE, SALT, COCOA, SOY LECITHIN, VANILLA EXTRACT, CARRAGEENAN
+                  {{ product.ingredients }}
                 </p>
               </div>  
             </div>
@@ -74,53 +74,21 @@
             <div class="product-review">
               <div class ="subheader"><h2>Reviews</h2></div>
               <ul>
+                  {% for list_of_dict in reviews: %} 
                 <li> 
                     <div class = "review-title">
-                        <div class = "title">fav Flavor !! </div>
-                        <div class = "rating-star">Rating: 5 stars</div>
+                        <div class = "title">
+                          {{ list_of_dict.title }} </div>
+                        <div class = "rating-star">Rating: {{ list_of_dict.stars }}</div>
                     </div>
-                    <div class = "author"><i>From: Anonymous</i> </div>
-                    <p class = "comment-text"> "This is my Favorite Ben & Jerrys Flavor ever, I wish it was easier to find. so many pB cups !! #LOVE that !! I really hope they make it permanent, because their is not very many other options for banana lovers. (I Hate the toppings in Chunky Monkey (◕︿◕✿)) would love if they added fudge brownies"</p>
+                    <div class = "author"><i>From: {{ list_of_dict.author }}</i> </div>
+                    <p class = "comment-text"> {{ list_of_dict.review_text }}</p>
                 </li>
             <br> 
-                <li> 
-                    <div class = "review-title">
-                        <div class = "title">Best Flavor Combo! </div>
-                        <div class = "rating-star">Rating: 5 stars</div>
-                    </div>
-                    <div class = "author"><i>From: jobird</i></div>
-                    <p class = "comment-text">"I'm so glad this flavor exists, it's my new favorite! Chocolate, PB, and banana is such a good combo, I order smoothies and milkshakes in that combo too." </p>
-                </li>
-            <br>
-                <li> 
-                    <div class = "review-title">
-                        <div class = "title">Yum! </div> 
-                        <div class = "rating-star">Rating: 5 stars</div>
-                    </div>
-                    <div class = "author"><i>From: Anonymous</i></div>
-                    <p class = "comment-text">"It’s like chunky monkey but with peanut butter cups instead of nuts!" </p>
-                </li>
-            <br>
-                <li>
-                    <div class = "review-title">
-                        <div class = "title">Best B&J Ever! </div> 
-                        <div class = "rating-star"> Rating: 5 stars</div>
-                    </div>
-                    <div class = "author"><i>From: letimedi</i></div>
-                    <p class = "comment-text">"This is the best Ben & Jerry's I've ever had! I can no longer eat nuts so the peanut butter cups are the best alternative to Chubby Hubby. I hope this flavor is available forever!"</p>
-                </li>
-            <br>
-                <li> 
-                    <div class = "review-title">
-                        <div class = "title">Best flavor!</div> 
-                        <div class = "rating-star"> Rating: 5 stars</div>
-                    </div>
-                    <div class = "author"><i>From: GG Danzigg</i> </div>
-                    <p class = "comment-text">"Bought this on a whim and it's the best B&J flavor of them all." </p>
-                </li>
+            {% endfor %}
+              
             </ul>
             <br> 
-            <p> <a href  = "www.morereviews.com" class="hyperlink"> More Reviews...</a> </p>
 
               
             </div>
