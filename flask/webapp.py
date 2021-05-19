@@ -59,7 +59,7 @@ def rankSearchResult():
 @app.route('/product/<name>')
 def getProduct(name):
     backend = DataSource()
-    product_info = backend.getProductSummary(name)
+    product_info = backend.getProductInfo(name)
     review_info = backend.getProductReviewInfo(name)
     return render_template('sample_result_page.html', product=product_info, reviews=review_info)
 
