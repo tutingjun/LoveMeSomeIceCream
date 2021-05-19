@@ -46,7 +46,7 @@
         <p>Sorry. There's no product that match your search keyword. Try again</p>
         {% else %}
         {% for product in results: %} 
-            <div onclick="location.href='/product'+product.image_key;" style="cursor: pointer;">
+            <div onclick="location.href='/product/'+product.image_key;" style="cursor: pointer;">
                 <img src="{{url_for('static', filename='images/'+product.image_key+'.png')}}">
                 <p>product_name is {{ product.product_name }}</p>
                 <p>brand is {{ product.brand }}</p>
