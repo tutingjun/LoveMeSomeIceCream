@@ -143,100 +143,6 @@ body{
     line-height: 150%;
 }
 
-h2 {
-  display: flex;
-  align-items: center;
-}
-
-h2::after {
-  content: '';
-  flex: 1;
-  margin-left: 1rem;
-  height: 1px;
-  background-color: white;
-}
-
-.review-title{
-    display: flex;
-    justify-content: space-between;
-}
-
-.title {
-  font-size: 1.4em;
-  font-weight: 700;
-  color: white;
-
-}
-
-.rating-star{
-    font-size: 1.4em;
-    color: #143D59;
-    padding-right: 1.5em;
-    font-weight: 700;
-}
-
-.subheader {
-  font-size: 1.2em;
-}
-
-.author{
-    font-size: 1.2em;
-    color: grey;
-}
-
-.product-review ul {
-    list-style: none;
-    padding-left: 1.5em;
-    padding-top: 1.25em;
-}
-
-.product-review li {
-    color:white;
-    padding: 0 1em;
-    line-height: 180%;
-    display: list-item;
-    list-style-type: disc;
-}
-
-.comment-text{
-    font-size: 1.2em;
-    color: white;
-}
-
-.product-detail{
-    padding: 1em 3em;
-    position: relative;
-    display: flex;
-    flex-direction: row;
-    box-sizing: border-box;
-}
-
-.product-detail h2{
-    color: white;
-    font-weight: 900;
-    font-size: 1.8em;
-}
-
-.product-detail p{
-    color: white;
-    padding: .75em 0;
-    line-height: 150%;
-    font-size: 1.2em;
-    margin: 0 auto; 
-}
-
-.product-review{
-    padding: 2em 3em;
-    flex-direction: row;
-    box-sizing: border-box;
-}
-
-.product-review h2{
-    color: white;
-    font-weight: 900;
-    font-size: 1.8em;
-}
-
 .hyperlink{
     padding-left: 3em;
     color: blue;
@@ -250,5 +156,11 @@ h2::after {
 
 .listed_products:hover{
     color: rgb(231,115,60);
-    background-color: white;
+    background-color: lavenderblush;
 }
+
+.overview_text:hover{
+  color : rgb(231,115,60);
+}
+
+
