@@ -1,7 +1,6 @@
 import flask
 from flask import render_template, request
 from datasource import DataSource
-import json
 import sys
 
 app = flask.Flask(__name__)
@@ -9,29 +8,26 @@ app = flask.Flask(__name__)
 # This line tells the web browser to *not* cache any of the files.
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 
-search_option = ""
-search_text = ""
+# store the search keywords and field as global vars
+# this is to retain the same list of search result when the user ranks the products
+search_option = "" # column to search in
+search_text = "" # keyword for search
 
 @app.route('/')
 def homePage():
     '''
-    Simplest example: print something in the browser
-    '''
-    return render_template('index.html')
-
-@app.route('/index')
-def home():
-    '''
-    Simplest example: print something in the browser
+    Default direct to the index
     '''
     return render_template('index.html')
 
 @app.route('/results', methods=['POST'])
 def searchResult():
     '''
-    This method is executed once you submit the simple form. It embeds the form responses
-    into a web page.
+    Direct the page to the list of products,
+    based on the form results, search_option and
+    search_text, from index.html.
     '''
+    # global keyword used here to declare that we are changing the global vars
     global search_option
     global search_text
     search_option = request.form["search_option"]
@@ -46,6 +42,9 @@ def searchResult():
 
 @app.route('/rank', methods=['POST'])
 def rankSearchResult():
+    '''
+    Rank the search results with respect to the user's choice in the drop down bar
+    '''
     rank_option = request.form["rank"]
 
     backend = DataSource()
@@ -59,6 +58,9 @@ def rankSearchResult():
 
 @app.route('/results/<name>')
 def getProduct(name):
+    '''
+    This method retrieve all product info and review info of the product chosen by the user. (the product chosen is based on the click action the user performed on the previous product_list.html page)
+    '''
     backend = DataSource()
     product_info = backend.getProductInfo(name)
     review_info = backend.getProductReviewInfo(name)
