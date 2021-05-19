@@ -32,8 +32,9 @@
         <h1>Results</h1>
 
         <p><label for="rank">Rank products by</label></p>
-        <form action="/results/rank" method="post">
+        <form action="/rank" method="post">
             <select id="rank_box" name="rank" size="1" onchange="this.form.submit()">
+            <option value="none"></option>
             <option value="product_name">Product Name-Alphabetical</option>
             <option value="rating">Average Rating</option>
             <option value="rating_count">Number of Ratings</option>
@@ -45,7 +46,7 @@
         <p>Sorry. There's no product that match your search keyword. Try again</p>
         {% else %}
         {% for product in results: %} 
-            <div onclick="location.href='index';" style="cursor: pointer;">
+            <div onclick="location.href='/product'+product.image_key;" style="cursor: pointer;">
                 <img src="{{url_for('static', filename='images/'+product.image_key+'.png')}}">
                 <p>product_name is {{ product.product_name }}</p>
                 <p>brand is {{ product.brand }}</p>
