@@ -1,4 +1,4 @@
-import psycopg2
+ import psycopg2
 
 
 class DataSource:
@@ -170,7 +170,7 @@ class DataSource:
         # if product_list is empty, no need to rank
         if product_list == []:
             return product_list
-        # if rank_column is null, default to ranking alphabetically by product_name
+        # if rank_column is null, default to ranking alphabetically by paroduct_name
         if rank_column is None:
             rank_column = "product_name"
         try:
@@ -183,6 +183,7 @@ class DataSource:
         except Exception as e:
             print ("Something went wrong when executing the query: ", e)
             return []
+
 
 
     def getProductSummary(self, image_key):
@@ -223,7 +224,7 @@ class DataSource:
             query = 'SELECT * FROM products WHERE image_key = '+ " \'"+ str(image_key)+ "\'"
             cursor.execute(query)
             productValue = list(sum(cursor.fetchall(), ()))
-            productKey = ['brand text', 'image_key', 'product_name', 'subhead' , 'product_description', 'rating' , 'rating_count', 'ingredients']
+            productKey = ['brand', 'image_key', 'product_name', 'subhead' , 'product_description', 'rating' , 'rating_count', 'ingredients']
             return self.makeProductDictionary(productValue, productKey)
         
         except Exception as e:
@@ -243,9 +244,10 @@ class DataSource:
         '''
         try:
             cursor = self.connection.cursor();
-            query = 'SELECT image_key, stars, review_text, author FROM reviews WHERE image_key = \'' + str(image_key) + "\'"
+            query = 'SELECT stars, review_text, author, title FROM reviews WHERE image_key = \'' + str(image_key) + "\'"
             cursor.execute(query)
-            return list(map(list, cursor.fetchall()))
+            key_tuple = ("stars", "review_text", "author", "title")
+            return self.makeReviewDictionary(key_tuple, list(map(list, cursor.fetchall())))
             
         except Exception as e:
             print ("Something went wrong when executing the query: ", e)
@@ -275,6 +277,20 @@ class DataSource:
             productDictionary[key_list[i]] = value_list[i]
         return productDictionary
     
+    def makeReviewDictionary(self, key_tuple, value_list):
+        '''
+        Get the list of dictionary (value_list element : key_list element) from two parameters
+        
+        Parameters:
+            value_list - the list of tuples containing all review, each tuple contains each review's stars, review_text and author
+            key_tuple - the tuple containing all the key value
+
+        Returns:
+            list of dictionary where each dictionary contains one review (value_list tuple element : key_tuple element)
+        '''
+        list_of_dict = [dict(zip(key_tuple, values)) for values in value_list]
+        return list_of_dict
+    
 
 if __name__ == '__main__': 
     # your code to test your function implementations goes here.
@@ -297,4 +313,5 @@ if __name__ == '__main__':
     print("\nproducts_advance_match")
     for item in products_advance_match:
         print(item)
+    
     
