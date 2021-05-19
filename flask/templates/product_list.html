@@ -29,14 +29,9 @@
     <div>
         <h1>Results</h1>
         {% for product in results: %} 
-        <table border = 1>
-            {% for key, value in product.items() %}
-                <tr>
-                <th> {{ key }} </th>
-                <td> {{ value }} </td>
-                </tr>
-            {% endfor %}
-        </table>
+            <div>
+                <img src="{{url_for('static', filename='images/'+product.image_key+'.png')}}">
+            </div>
         {% endfor %}
     </div>
 
