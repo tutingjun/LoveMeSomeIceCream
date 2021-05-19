@@ -9,6 +9,9 @@ app = flask.Flask(__name__)
 # This line tells the web browser to *not* cache any of the files.
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 
+search_option = ""
+search_text = ""
+
 @app.route('/')
 def homePage():
     '''
@@ -34,6 +37,19 @@ def searchResult():
     
     backend = DataSource()
     products_match = backend.match_product(search_text, search_option)
+    result = []
+    for img_key in products_match:
+        result.append(backend.getProductSummary(img_key))
+    return render_template('product_list.html', results=result)
+
+@app.route('/results/rank', methods=['POST'])
+def rankSearchResult():
+    rank_option = request.form["rank"]
+
+    backend = DataSource()
+    products_match = backend.match_product(search_text, search_option)
+    products_match = backend.rank_product(products_match, rank_option)
+    
     result = []
     for img_key in products_match:
         result.append(backend.getProductSummary(img_key))
