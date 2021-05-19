@@ -263,10 +263,16 @@ class DataSource:
         Returns:
             dictionary (value_list element : key_list element). If the two lists are of different size, return none
         '''
+        productDictionary= {}
+        brandName = {"bj":"Ben & Jerry's", "breyers": "Breyers", "talenti":"Talenti", "hd": "Häagen-Dazs"}
         if len(value_list) != len(key_list):
             print("Incorrect size. Unable to form a dictionary.")
             return None
-        productDictionary = {key_list[i]: value_list[i] for i in range(len(key_list))}
+        # convert the brand names from acronyms to full name
+        for i in range(len(key_list)):
+            if value_list[i] in brandName.keys():
+                value_list[i] = brandName.get(value_list[i])
+            productDictionary[key_list[i]] = value_list[i]
         return productDictionary
     
 
@@ -291,3 +297,4 @@ if __name__ == '__main__':
     print("\nproducts_advance_match")
     for item in products_advance_match:
         print(item)
+    
