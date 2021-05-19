@@ -30,6 +30,20 @@
       
 
         <h1>Results</h1>
+
+        <p><label for="rank">Rank products by</label></p>
+        <form action="/results/rank" method="post">
+            <select id="rank_box" name="rank" size="1" onchange="this.form.submit()">
+            <option value="product_name">Product Name-Alphabetical</option>
+            <option value="rating">Average Rating</option>
+            <option value="rating_count">Number of Ratings</option>
+            </select>
+        </form>
+        <br><br>
+
+        {% if results == [] %}
+        <p>Sorry. There's no product that match your search keyword. Try again</p>
+        {% else %}
         {% for product in results: %} 
             <div onclick="location.href='index';" style="cursor: pointer;">
                 <img src="{{url_for('static', filename='images/'+product.image_key+'.png')}}">
@@ -39,6 +53,7 @@
             </div>
             <br>
         {% endfor %}
+        {% endif %}
     </div>
 
 </body>
