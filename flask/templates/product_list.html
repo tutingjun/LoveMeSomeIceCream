@@ -49,17 +49,17 @@
         <div class="listed_products" onclick="location.href='{{ url_for('getProduct', name=product.image_key) }}';" style="cursor: pointer;">
             <div class="product-overview">
                 <img src="{{url_for('static', filename='images/'+product.image_key+'.png')}}" alt="product image" class="ice-cream-img">
-                <div class="overview-text">
+                <div class="listed_products overview-text">
                     <h1> {{ product.product_name }} </h1>
-                    <div class="overview-column">
-                        <div class="overview-detail">
-                            <div class="overview-title"><b>Brand Name</b></div>
-                            <div class="overview-content">{{ product.brand }}</div>
+                    <div class="listed_products overview-column">
+                        <div class="listed_products overview-detail">
+                            <div class="listed_products overview-title"><b>Brand Name</b></div>
+                            <div class="listed_products overview-content">{{ product.brand }}</div>
                         </div>
 
-                        <div class="overview-detail">
-                            <div class="overview-title"><b>Rating</b></div>
-                            <div class="overview-content"> {{ product.rating }} </div>
+                        <div class="listed_products overview-detail">
+                            <div class="listed_products overview-title"><b>Rating</b></div>
+                            <div class="listed_products overview-content"> {{ product.rating }} </div>
                         </div>
                     </div>
                 </div>
