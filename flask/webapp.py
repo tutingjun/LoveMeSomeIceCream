@@ -49,7 +49,7 @@ def rankSearchResult():
     backend = DataSource()
     products_match = backend.match_product(search_text, search_option)
     products_match = backend.rank_product(products_match, rank_option)
-    print(products_match)
+    print(search_option)
     result = []
     for img_key in products_match:
         result.append(backend.getProductSummary(img_key))
