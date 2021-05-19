@@ -26,10 +26,12 @@
       </div>
     </div>
 
-    <div style="background-color: rgb(240, 165, 25);">
+    <div style="background-color: rgb(240, 165, 25)">
+      
+
         <h1>Results</h1>
         {% for product in results: %} 
-            <div>
+            <div onclick="location.href='index';" style="cursor: pointer;">
                 <img src="{{url_for('static', filename='images/'+product.image_key+'.png')}}">
                 <p>product_name is {{ product.product_name }}</p>
                 <p>brand is {{ product.brand }}</p>
