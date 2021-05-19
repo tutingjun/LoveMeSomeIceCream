@@ -170,12 +170,12 @@ class DataSource:
         # if product_list is empty, no need to rank
         if product_list == []:
             return product_list
-        # if rank_column is null, default to ranking alphabetically by paroduct_name
-        if rank_column is None:
-            rank_column = "product_name"
         try:
             cursor = self.connection.cursor();
-            query = 'SELECT image_key FROM products WHERE image_key IN ({}) ORDER BY {} DESC'.format(','.join(['%s'] * len(product_list)), str(rank_column))
+            if rank_column == "product_name":
+                query = 'SELECT image_key FROM products WHERE image_key IN ({}) ORDER BY {}'.format(','.join(['%s'] * len(product_list)), str(rank_column))
+            else:
+                query = 'SELECT image_key FROM products WHERE image_key IN ({}) ORDER BY {} DESC'.format(','.join(['%s'] * len(product_list)), str(rank_column))
             # we only rank in decending order
             cursor.execute(query, product_list)
             return list(sum(cursor.fetchall(), ()))
@@ -313,5 +313,4 @@ if __name__ == '__main__':
     print("\nproducts_advance_match")
     for item in products_advance_match:
         print(item)
-    
     
