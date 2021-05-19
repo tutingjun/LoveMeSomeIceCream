@@ -30,11 +30,11 @@
         <h1>Results</h1>
         {% for product in results: %} 
             <div>
-                "product_name", "brand", "rating"]
                 <img src="{{url_for('static', filename='images/'+product.image_key+'.png')}}">
                 <p>{{ product.product_name }}</p>
                 <p>{{ product.brand }}</p>
                 <p>{{ product.rating }}</p>
+
             </div>
             <br>
         {% endfor %}
