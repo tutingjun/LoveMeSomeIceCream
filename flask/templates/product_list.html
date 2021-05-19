@@ -48,7 +48,7 @@
         {% for product in results: %} 
             <div onclick="href={{ url_for('getProduct', name=product.image_key) }};" style="cursor: pointer;">
                 <img src="{{url_for('static', filename='images/'+product.image_key+'.png')}}">
-                <p>product_name is {{ product.product_name }}</p>
+                <p>product_name is <a href = "{{ url_for('getProduct', name=product.image_key) }}" >{{ product.product_name }}</a></p>
                 <p>brand is {{ product.brand }}</p>
                 <p>rating is {{ product.rating }}</p>
             </div>
