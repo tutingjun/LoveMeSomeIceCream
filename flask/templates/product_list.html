@@ -5,7 +5,7 @@
 <head>
 	<meta charset="utf-8">
 	<title>LoveMeSomeIceCream</title>
-	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='about_style.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='list_style.css') }}">
 </head>
 
 <body>
@@ -46,11 +46,23 @@
         <p>Sorry. There's no product that match your search keyword. Try again</p>
         {% else %}
         {% for product in results: %} 
-            <div onclick="location.href='{{ url_for('getProduct', name=product.image_key) }}';" style="cursor: pointer;">
-                <img src="{{url_for('static', filename='images/'+product.image_key+'.png')}}">
-                <p>product_name is {{ product.product_name }}</a></p>
-                <p>brand is {{ product.brand }}</p>
-                <p>rating is {{ product.rating }}</p>
+        <div class="listed_products" onclick="location.href='{{ url_for('getProduct', name=product.image_key) }}';" style="cursor: pointer;">
+                <img src="{{url_for('static', filename='images/'+product.image_key+'.png')}}" alt="product image" class="ice-cream-img">
+                <div class="overview-text">
+                    <h1> {{ product.product_name }} </h1>
+                    <div class="overview-column">
+                        <div class="overview-detail">
+                            <div class="overview-title"><b>Brand Name</b></div>
+                            <div class="overview-content">{{ product.brand }}</div>
+                        </div>
+
+                        <div class="overview-detail">
+                            <div class="overview-title"><b>Rating</b></div>
+                            <div class="overview-content"> {{ product.rating }} </div>
+                        </div>
+    
+                    </div>
+                </div>
             </div>
             <br>
         {% endfor %}
