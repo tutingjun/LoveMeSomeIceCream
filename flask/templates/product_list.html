@@ -47,6 +47,7 @@
         {% else %}
         {% for product in results: %} 
         <div class="listed_products" onclick="location.href='{{ url_for('getProduct', name=product.image_key) }}';" style="cursor: pointer;">
+            <div class="product-overview">
                 <img src="{{url_for('static', filename='images/'+product.image_key+'.png')}}" alt="product image" class="ice-cream-img">
                 <div class="overview-text">
                     <h1> {{ product.product_name }} </h1>
@@ -60,11 +61,11 @@
                             <div class="overview-title"><b>Rating</b></div>
                             <div class="overview-content"> {{ product.rating }} </div>
                         </div>
-    
                     </div>
                 </div>
             </div>
-            <br>
+        </div>
+        <br>
         {% endfor %}
         {% endif %}
     </div>
