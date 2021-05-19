@@ -153,12 +153,7 @@ body{
     text-decoration: underline;
 }
 
-
 .listed_products:hover{
     color: rgb(231,115,60) !important;
     background-color: lavenderblush;
-}
-
-.overview-text h1:hover{
-  color : rgb(231,115,60) !important;
 }
