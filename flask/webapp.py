@@ -43,7 +43,7 @@ def searchResult():
     search.append(search_text)
     return render_template('product_list.html', results=result)
 
-@app.route('/results/rank', methods=['POST'])
+@app.route('/rank', methods=['POST'])
 def rankSearchResult():
     rank_option = request.form["rank"]
 
