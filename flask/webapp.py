@@ -12,6 +12,7 @@ app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 # this is to retain the same list of search result when the user ranks the products
 search_option = "" # column to search in
 search_text = "" # keyword for search
+products_match=[]
 
 @app.route('/')
 def homePage():
@@ -28,13 +29,24 @@ def searchResult():
     search_text, from index.html.
     '''
     # global keyword used here to declare that we are changing the global vars
-    global search_option
-    global search_text
-    search_option = request.form["search_option"]
-    search_text = request.form["search_text"]
-    
+    global products_match
     backend = DataSource()
-    products_match = backend.match_product(search_text, search_option)
+    search_option = request.form["search_option"]
+    if search_option != "advance_search":
+        if search_option == "brand":
+            search_text = request.form["brand_s"]
+        else:
+            search_text = request.form["search_text"]
+        products_match = backend.match_product(search_text, search_option)
+    else:
+        brand = request.form["brand_s"]
+        product_name = request.form["search_text_name"]
+        upper_rating = request.form["search_text_upper"]
+        lower_rating = request.form["search_text_lower"]
+        ingredients = request.form["search_text_ingrediens"]
+        review_text = request.form["search_text_review"]
+        products_match = backend.advance_match(brand, product_name, upper_rating, lower_rating, ingredients, review_text)
+        
     result = []
     for img_key in products_match:
         result.append(backend.getProductSummary(img_key))
@@ -45,10 +57,10 @@ def rankSearchResult():
     '''
     Rank the search results with respect to the user's choice in the drop down bar
     '''
+    global products_match
     rank_option = request.form["rank"]
 
     backend = DataSource()
-    products_match = backend.match_product(search_text, search_option)
     products_match = backend.rank_product(products_match, rank_option)
     print(products_match)
     result = []
