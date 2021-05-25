@@ -8,10 +8,8 @@ app = flask.Flask(__name__)
 # This line tells the web browser to *not* cache any of the files.
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 
-# store the search keywords and field as global vars
+# store the list of products as global var
 # this is to retain the same list of search result when the user ranks the products
-search_option = "" # column to search in
-search_text = "" # keyword for search
 products_match=[]
 
 @app.route('/')
