@@ -1,5 +1,4 @@
-// for index.html
-// use different divs for different search options
+/* sets different search area divs for different search conditions */
 function changeSearchArea(name) {
   clearAll();
   if (name === "brand") {
@@ -7,17 +6,19 @@ function changeSearchArea(name) {
   }
   else if (name === "name") {
     document.getElementById("site-search").style.display = "flex";
-    document.getElementById("site-search-text").placeholder='Enter product name';
+    document.getElementById("site-search-text").placeholder='Enter product name, eg. Salted Caramel Core';
   }
   else if (name === "ingredients") {
     document.getElementById("site-search").style.display = "flex";
-    document.getElementById("site-search-text").placeholder='Enter an ingredient';
+    document.getElementById("site-search-text").placeholder='Enter an ingredient, eg. chocolate';
   }
   else if (name === "advance"){
     document.getElementById("advance-search").style.display = "block";
   }
 }
 
+
+/* initiates the search area by clearing all divs that correspond to other search conditions */
 function clearAll(){
     var seachDropDown = document.getElementById("brand-search");
     var searchBar = document.getElementById("site-search");
