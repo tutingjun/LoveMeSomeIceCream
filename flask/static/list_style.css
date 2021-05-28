@@ -130,6 +130,7 @@ body{
 
 
 .sorry-message{
+    height: 100%;
     color: white;
     font-size: 1.5em;
     font-weight: 300 !important;
