@@ -5,6 +5,7 @@
 	<meta charset="utf-8">
 	<title>LoveMeSomeIceCream</title>
 	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='result_style.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='navigation.css') }}">
 </head>
 
 
@@ -22,7 +23,7 @@
             <li><a href={{ url_for("homePage") }}>Home</a></li>
             <li><a href="analysis">Brand Analysis</a></li>
             <li><a href="download">Download Data</a></li>
-            <li><a href="about">About Data</a></li>
+            <li><a href={{ url_for("aboutPage") }}>About Data</a></li>
           </ul>
         </div>
       </div>
@@ -38,10 +39,12 @@
                     <h1> {{ product.product_name }} </h1>
 
                     <div class="overview-column">
+                        {% if product.brand == "Ben & Jerry's" %}
                         <div class="overview-detail">
                             <div class="overview-title"><b>Subhead</b></div>
                             <div class="overview-content">{{ product.subhead }}</div>
                         </div>
+                        {% endif %}
 
                         <div class="overview-detail">
                             <div class="overview-title"><b>Brand Name</b></div>
