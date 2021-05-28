@@ -125,10 +125,6 @@ body{
     text-decoration: none;
 }
 
-.listed_products{
-    background-color: rgb(240, 165, 25);
-}
-
 .listed_products:hover{
     background-color: rgb(231,115,60);
 }
