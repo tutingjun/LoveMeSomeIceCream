@@ -11,6 +11,7 @@ h1{
 body{
     height: 100vh;
     margin: 0 auto;
+    background-color: rgb(240, 165, 25);
 }
 
 .sec-result{
@@ -34,7 +35,7 @@ body{
     display: flex;
     flex-direction: row;
     box-sizing: border-box;
-    background-color: rgb(240, 165, 25);
+
 }
 
 .start{
@@ -122,6 +123,10 @@ body{
     padding-left: 3em;
     color: blue;
     text-decoration: none;
+}
+
+.listed_products{
+    background-color: rgb(240, 165, 25);
 }
 
 .listed_products:hover{
