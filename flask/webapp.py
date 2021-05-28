@@ -19,6 +19,13 @@ def homePage():
     '''
     return render_template('index.html')
 
+@app.route('/aboutData')
+def aboutPage():
+    '''
+    Direct to the about data page
+    '''
+    return render_template("about.html")
+
 @app.route('/results', methods=['POST'])
 def searchResult():
     '''
