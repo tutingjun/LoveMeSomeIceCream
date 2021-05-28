@@ -34,6 +34,7 @@ body{
     display: flex;
     flex-direction: row;
     box-sizing: border-box;
+    background-color: rgb(240, 165, 25);
 }
 
 .start{
