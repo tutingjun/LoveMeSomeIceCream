@@ -13,14 +13,14 @@
 <body>
 <!--Navigation Bar-->
 	<div class="navigationBar">
-		<div class="container">
+		<div class="contain">
 			<div>
 				<img src={{ url_for('static', filename='logo.png') }} alt="Site logo" class="logo">
       </div>
       <div class="menu">
         <ul>
           <li><a href={{ url_for("homePage") }}>Home</a></li>
-          <li><a href="download">Download Data</a></li>
+          <li><a href={{ url_for("downloadPage") }}>Download Data</a></li>
           <li><a href={{ url_for("aboutPage") }}>About Data</a></li>
         </ul>
       </div>
