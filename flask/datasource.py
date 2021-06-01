@@ -102,8 +102,12 @@ class DataSource:
         '''
         if upper_rating == "":
             upper_rating = "5"
+        elif not self.isNumber(upper_rating):
+            upper_rating = "999"
         if lower_rating == "":
             lower_rating = "0"
+        elif not self.isNumber(lower_rating):
+            lower_rating = "999"
         products_match = self.advance_products_match(brand, product_name, upper_rating, lower_rating, ingredients)
         reviews_match = self.advance_reviews_match(review_text)
 
@@ -293,4 +297,21 @@ class DataSource:
         '''
         list_of_dict = [dict(zip(key_tuple, values)) for values in value_list]
         return list_of_dict
-   
+    
+    def isNumber(self, s):
+        '''
+        Helper funtion to determine whether a given string is a number
+
+        Parameter:
+            s - the string to check whether it is a number
+        
+        Returns:
+            A boolean indiacte whether the string is a number 
+        '''
+        try:
+            float(s)
+            return True
+        except ValueError:
+            return False
+    
+
