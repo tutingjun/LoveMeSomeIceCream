@@ -77,6 +77,7 @@
                         aria-label="Search through site content" class="search_bar">
             
                     <input type="image" class = "search-button" src="{{ url_for('static', filename='loupe.png') }}" alt="search button" width="51" height="51" value="">
+                    <br>
                     <small id="nameHelpTab" class="form-text"></small>
                 </div>
 
@@ -92,7 +93,7 @@
                     <input type="image" class = "search-button-new" src="{{ url_for('static', filename='loupe_white.png') }}" alt="search button" width="45" height="45" value="">
                 </div>
 
-                <div class="advace-search" id="advance-search">
+                <div class="advance-search" id="advance-search">
                     <div class="form-group row">
                         <label for="brand" class="col-sm-2 col-form-label">Brand</label>
                     <div class="col-sm-10">
@@ -109,7 +110,7 @@
                         <label for="advance-search-name-text" class="col-sm-2 col-form-label">Name</label>
                     <div class="col-sm-10">
                         <input type="text" id="advance-search-name-text" name="search_text_name"
-                        aria-label="Search product name" placeholder="Enter a product name, eg. Salted Caramel Core" class="form-control">
+                        aria-label="Search product name" placeholder="Enter a product name/subhead keyword, eg. Cannoli" class="form-control">
                          <small id="NameHelp" class="form-text">Could be the displayed product name or its full name (i.e. subhead, see subhead info in product detail page)</small>
                     </div>
                     </div>
