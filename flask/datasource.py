@@ -124,7 +124,7 @@ class DataSource:
         try:
             cursor = self.connection.cursor();
 
-            query_products  = "SELECT image_key FROM products WHERE brand " + " LIKE '%" + str(brand) + "%' AND product_name " + "LIKE '%" + str(product_name).title()+ "%' OR subhead " + "LIKE '%" + str(product_name).title() + "%' AND rating BETWEEN " + str(lower_rating) + " AND " + str(upper_rating) + " AND ingredients " + "LIKE '%" + str(ingredients).upper() + "%'"
+            query_products  = "SELECT image_key FROM products WHERE brand " + " LIKE '%" + str(brand) + "%' AND product_name " + "LIKE '%" + str(product_name).title()+ "%' OR subhead " + "LIKE '%" + str(product_name).title() + "%' AND rating BETWEEN (" + str(lower_rating) + " AND " + str(upper_rating) + ") AND ingredients " + "LIKE '%" + str(ingredients).upper() + "%'"
 
             cursor.execute(query_products)
             return list(sum(cursor.fetchall(), ()))
