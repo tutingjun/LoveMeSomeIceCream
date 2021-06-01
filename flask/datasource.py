@@ -103,7 +103,7 @@ class DataSource:
         products_match = self.advance_products_match(brand, product_name, upper_rating, lower_rating, ingredients)
         reviews_match = self.advance_reviews_match(review_text)
 
-        advance_match = list(set(products_match).intersection(reviews_match))
+        advance_match = [value for value in products_match if value in reviews_match]
         return advance_match
 
 
@@ -124,10 +124,10 @@ class DataSource:
         try:
             cursor = self.connection.cursor();
 
-            query_products  = "SELECT image_key FROM products WHERE brand " + " LIKE '%" + str(brand) + "%' AND (product_name " + "LIKE '%" + str(product_name).title()+ "%') OR (subhead " + "LIKE '%" + str(product_name).title() + "%') AND rating BETWEEN " + str(lower_rating) + " AND " + str(upper_rating) + " AND ingredients " + "LIKE '%" + str(ingredients).upper() + "%'"
-
+            query_products  = "SELECT image_key FROM products WHERE (brand " + " LIKE '%" + str(brand) + "%') AND (rating BETWEEN " + str(lower_rating) + " AND " + str(upper_rating) + ") AND (ingredients " + "LIKE '%" + str(ingredients).upper() + "%')"
             cursor.execute(query_products)
-            return list(sum(cursor.fetchall(), ()))
+            query_without_name = list(sum(cursor.fetchall(), ()))
+            return [value for value in query_without_name if value in self.match_name(product_name)]
         
         except Exception as e:
             print ("Something went wrong when executing the query: ", e)
