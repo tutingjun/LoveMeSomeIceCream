@@ -26,6 +26,13 @@ def aboutPage():
     '''
     return render_template("about.html")
 
+@app.route('/download')
+def downloadPage():
+    '''
+    Direct to the about data page
+    '''
+    return render_template("download.html")
+
 @app.route('/results', methods=['POST'])
 def searchResult():
     '''
