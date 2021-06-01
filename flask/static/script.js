@@ -6,13 +6,11 @@ function changeSearchArea(name) {
   }
   else if (name === "name") {
     document.getElementById("site-search").style.display = "flex";
-    document.getElementById("site-search-text").placeholder='Enter product name, eg. Salted Caramel Core';
-    document.getElementById("nameHelpTab").textContent="Could be the displayed product name or its full name (i.e. subhead, see subhead info in product detail page)";
+    document.getElementById("site-search-text").placeholder='Enter a product name/subhead, eg. Cannoli';
   }
   else if (name === "ingredients") {
     document.getElementById("site-search").style.display = "flex";
     document.getElementById("site-search-text").placeholder='Enter an ingredient, eg. chocolate';
-    document.getElementById("nameHelpTab").textContent="";
   }
   else if (name === "advance"){
     document.getElementById("advance-search").style.display = "block";
