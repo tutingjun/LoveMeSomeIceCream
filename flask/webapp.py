@@ -51,7 +51,7 @@ def searchResult():
             search_text = request.form["search_text"]
         products_match = backend.match_product(search_text, search_option)
     else:
-        brand = request.form["brand_s"]
+        brand = request.form["brand_a"]
         product_name = request.form["search_text_name"]
         upper_rating = request.form["search_text_upper"]
         lower_rating = request.form["search_text_lower"]
