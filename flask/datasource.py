@@ -103,7 +103,7 @@ class DataSource:
         if upper_rating == "":
             upper_rating = "5"
         if lower_rating == "":
-            lower_rating = "5"
+            lower_rating = "0"
         products_match = self.advance_products_match(brand, product_name, upper_rating, lower_rating, ingredients)
         reviews_match = self.advance_reviews_match(review_text)
 
