@@ -293,27 +293,4 @@ class DataSource:
         '''
         list_of_dict = [dict(zip(key_tuple, values)) for values in value_list]
         return list_of_dict
-    
-
-if __name__ == '__main__': 
-    # your code to test your function implementations goes here.
-    test = DataSource()
-
-    #match
-    products_ingredient_match = test.match_product("chocolate", "ingredients")
-    products_name_match = test.match_product("Salted", "name")
-    products_advance_match = test.advance_match("bj", "Salted Caramel Core", 3, 4, "cream", "good")
-    
-    #print
-    print("\nproducts_ingredient_match:")
-    for item in products_ingredient_match:
-        print(item)
-    
-    print("\nproducts_name_match:")
-    for item in products_name_match:
-        print(item)
-    
-    print("\nproducts_advance_match")
-    for item in products_advance_match:
-        print(item)
-    
+   
