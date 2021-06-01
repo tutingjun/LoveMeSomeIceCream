@@ -10,7 +10,7 @@ class DataSource:
 
     def __init__(self):
         '''
-        Note: if you choose to implement the constructor, this does *not* count as one of your implemented methods.
+        Establishes a connection to the database
         '''
         self.connection = self.connect()
 
@@ -26,7 +26,7 @@ class DataSource:
         Note: exits if a connection cannot be established.
         '''
         try:
-            connection = psycopg2.connect(database="tut", user="tut", password="farm498lamp")
+            connection = psycopg2.connect(database="tut", user="tut", password="farm498lamp", host="localhost")
         except Exception as e:
             print("Connection error: ", e)
             exit()
@@ -124,7 +124,7 @@ class DataSource:
         try:
             cursor = self.connection.cursor();
 
-            query_products  = "SELECT image_key FROM products WHERE brand " + " LIKE '%" + str(brand) + "%' AND product_name " + "LIKE '%" + str(product_name).title()+ "%' OR subhead " + "LIKE '%" + str(product_name).title() + "%' AND rating BETWEEN (" + str(lower_rating) + " AND " + str(upper_rating) + ") AND ingredients " + "LIKE '%" + str(ingredients).upper() + "%'"
+            query_products  = "SELECT image_key FROM products WHERE brand " + " LIKE '%" + str(brand) + "%' AND (product_name " + "LIKE '%" + str(product_name).title()+ "%') OR (subhead " + "LIKE '%" + str(product_name).title() + "%') AND rating BETWEEN " + str(lower_rating) + " AND " + str(upper_rating) + " AND ingredients " + "LIKE '%" + str(ingredients).upper() + "%'"
 
             cursor.execute(query_products)
             return list(sum(cursor.fetchall(), ()))
