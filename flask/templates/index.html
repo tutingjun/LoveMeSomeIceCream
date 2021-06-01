@@ -73,11 +73,13 @@
                 
                 <!--Format seperate search bars for different search conditions selected-->
                 <div class="site-search" id="site-search">
+		<div class="form-group col-md-6">
                     <input type="text" id="site-search-text" name="search_text"
                         aria-label="Search through site content" class="search_bar">
             
                     <input type="image" class = "search-button" src="{{ url_for('static', filename='loupe.png') }}" alt="search button" width="51" height="51" value="">
-                    <small id="nameHelpTab"></small>
+                    <small id="nameHelpTab" class="form-text"></small>
+		</div>
                 </div>
 
                 <div class="brand-search" id="brand-search">
