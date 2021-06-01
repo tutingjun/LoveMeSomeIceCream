@@ -57,7 +57,7 @@ def searchResult():
         lower_rating = request.form["search_text_lower"]
         ingredients = request.form["search_text_ingrediens"]
         review_text = request.form["search_text_review"]
-        print(product_name,upper_rating,lower_rating,ingredients,review_text, end="\n")
+        print(product_name,upper_rating,lower_rating,ingredients,review_text)
         products_match = backend.advance_match(brand, product_name, upper_rating, lower_rating, ingredients, review_text)
         
     result = []
