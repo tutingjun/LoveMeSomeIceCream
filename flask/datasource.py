@@ -100,6 +100,10 @@ class DataSource:
         Returns:
             a list of image keys of all products that match the input condition. Empty list if there is no match.
         '''
+        if upper_rating == "":
+            upper_rating = "5"
+        if lower_rating == "":
+            lower_rating = "5"
         products_match = self.advance_products_match(brand, product_name, upper_rating, lower_rating, ingredients)
         reviews_match = self.advance_reviews_match(review_text)
 
@@ -123,7 +127,7 @@ class DataSource:
         '''
         try:
             cursor = self.connection.cursor();
-
+            if 
             query_products  = "SELECT image_key FROM products WHERE (brand " + " LIKE '%" + str(brand) + "%') AND (rating BETWEEN " + str(lower_rating) + " AND " + str(upper_rating) + ") AND (ingredients " + "LIKE '%" + str(ingredients).upper() + "%')"
             cursor.execute(query_products)
             query_without_name = list(sum(cursor.fetchall(), ()))
