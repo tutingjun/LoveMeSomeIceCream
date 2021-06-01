@@ -127,7 +127,6 @@ class DataSource:
         '''
         try:
             cursor = self.connection.cursor();
-            if 
             query_products  = "SELECT image_key FROM products WHERE (brand " + " LIKE '%" + str(brand) + "%') AND (rating BETWEEN " + str(lower_rating) + " AND " + str(upper_rating) + ") AND (ingredients " + "LIKE '%" + str(ingredients).upper() + "%')"
             cursor.execute(query_products)
             query_without_name = list(sum(cursor.fetchall(), ()))
