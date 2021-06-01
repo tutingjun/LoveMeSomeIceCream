@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-
 <html lang="en">
+
 
 <head>
 	<meta charset="utf-8">
@@ -9,23 +9,23 @@
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='navigation.css') }}">
 </head>
 
+
 <body>
 <!--Navigation Bar-->
 	<div class="navigationBar">
 		<div class="container">
 			<div>
 				<img src={{ url_for('static', filename='logo.png') }} alt="Site logo" class="logo">
-        </div>
-        <div class="menu">
-          <ul>
-            <li><a href={{ url_for("homePage") }}>Home</a></li>
-            <li><a href="analysis">Brand Analysis</a></li>
-            <li><a href="download">Download Data</a></li>
-            <li><a href={{ url_for("aboutPage") }}>About Data</a></li>
-          </ul>
-        </div>
+      </div>
+      <div class="menu">
+        <ul>
+          <li><a href={{ url_for("homePage") }}>Home</a></li>
+          <li><a href="download">Download Data</a></li>
+          <li><a href={{ url_for("aboutPage") }}>About Data</a></li>
+        </ul>
       </div>
     </div>
+  </div>
 
 <!--About Content-->
 <div class = "about">
@@ -35,11 +35,11 @@
   <div class = "source-info-content">
     <h1>Source of Data</h1>
     <p>This dataset is provided by Tyson Pond on Kaggle.com (<a href = "https://www.kaggle.com/tysonpo/ice-cream-dataset">linked here</a>). </p> 
-    <p>This dataset contains details (including ingredients, ratings, product names), images, and reviews of 241 ice cream flavors across 4 brands (Ben & Jerry's, Häagen-Dazs, Breyers, and Talenti). All datasets provided are in .csv format, and the images provided are in png format.
-  </p>
+    <p>This dataset contains details (including ingredients, ratings, product names), images, and reviews of 241 ice cream flavors across 4 brands (Ben & Jerry's, Häagen-Dazs, Breyers, and Talenti). All datasets provided are in .csv format, and the images provided are in png format.</p>
   </div>
   </div>
 </section>
+
 
 <!--Metadata-->
 <section aria-label="Metadata">  
@@ -72,7 +72,6 @@
     
   </div>
 </section>
-
 </div>
 
 
