@@ -1,13 +1,12 @@
-# cs257-s21-team-a
-Team members: Helen Du, Peter Tu, Yucheng Yang
+# Love Me Some Ice Cream
 
-Database account: tut@carleton.edu<br>
-Database password: farm498lamp
+This is a website that allows users to search ice cream data from the database. This website is built by Flask framework with the help of bootstrap in the front end. Querying database uses all SQL.
 
-Starting webpage: index.html
+## Details
 
-Known bugs: 
-Using browser back button when returning from product_list(product_list.html) to home page(index.html) and hit search button again will return all products (the search filter will not work even though the conditions put in before will be there).
+- Team members: [Helen Du](https://github.com/helenduz), Peter Tu, [Yucheng Yang](https://github.com/YuchengY)
+- Starting webpage: index.html
 
+## Known bugs:
 
-In short: **don't hit browser back button when you are at the product_list(product_list.html) page. Click on the home page icon to go back to the home page when you want to initiate a new search.**
+Using browser back button when returning from `product_list(product_list.html)` to home page(index.html) and hit search button again will return all products (the search filter will not work even though the conditions put in before will be there).
