@@ -1,6 +1,6 @@
 # Love Me Some Ice Cream
 
-This is a website that allows users to search ice cream data from the database. This website is built by Flask framework with the help of bootstrap in the front end. Querying database uses all SQL.
+This is a website that allows users to search ice cream data from the database. This website is built by Flask framework with the help of bootstrap in the front end. Querying database uses all SQL. A detailed writeup can be found [here](https://petertu.gatsbyjs.io/blog/love-me-some-ice-cream).
 
 ## Details
 
