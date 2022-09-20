@@ -4,7 +4,7 @@ This is a website that allows users to search ice cream data from the database. 
 
 ## Details
 
-- Team members: [Helen Du](https://github.com/helenduz), Peter Tu, [Yucheng Yang](https://github.com/YuchengY)
+- Team members: [Helen Du](https://github.com/helenduz), [Yucheng Yang](https://github.com/YuchengY), Peter Tu
 - Starting webpage: index.html
 
 ## Known bugs:
